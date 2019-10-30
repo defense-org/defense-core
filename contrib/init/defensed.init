@@ -1,0 +1,67 @@
+#!/bin/bash
+#
+#  defensed The defense core server.
+#
+#
+# chkconfig: 345 80 20
+# description: defensed
+# processname: defensed
+#
+
+# Source function library.
+. /etc/init.d/functions
+
+# you can override defaults in /etc/sysconfig/defensed, see below
+if [ -f /etc/sysconfig/defensed ]; then
+        . /etc/sysconfig/defensed
+fi
+
+RETVAL=0
+
+prog=defensed
+# you can override the lockfile via BITCOIND_LOCKFILE in /etc/sysconfig/defensed
+lockfile=${BITCOIND_LOCKFILE-/var/lock/subsys/defensed}
+
+# defensed defaults to /usr/bin/defensed, override with BITCOIND_BIN
+bitcoind=${BITCOIND_BIN-/usr/bin/defensed}
+
+# defensed opts default to -disablewallet, override with BITCOIND_OPTS
+bitcoind_opts=${BITCOIND_OPTS}
+
+start() {
+    echo -n $"Starting $prog: "
+    daemon $DAEMONOPTS $bitcoind $bitcoind_opts
+    RETVAL=$?
+    echo
+    [ $RETVAL -eq 0 ] && touch $lockfile
+    return $RETVAL
+}
+
+stop() {
+    echo -n $"Stopping $prog: "
+    killproc $prog
+    RETVAL=$?
+    echo
+    [ $RETVAL -eq 0 ] && rm -f $lockfile
+    return $RETVAL
+}
+
+case "$1" in
+    start)
+        start
+        ;;
+    stop)
+        stop
+        ;;
+    status)
+        status $prog
+        ;;
+    restart)
+        stop
+        start
+        ;;
+    *)
+        echo "Usage: service $prog {start|stop|status|restart}"
+        exit 1
+        ;;
+esac

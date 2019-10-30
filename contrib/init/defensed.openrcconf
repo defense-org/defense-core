@@ -1,0 +1,26 @@
+# /etc/conf.d/defensed: config file for /etc/init.d/defensed
+
+# Config file location
+#BITCOIND_CONFIGFILE="/etc/defense/defense.conf"
+
+# What directory to write pidfile to?  (created and owned by $BITCOIND_USER)
+#BITCOIND_PIDDIR="/var/run/defensed"
+
+# What filename to give the pidfile
+#BITCOIND_PIDFILE="${BITCOIND_PIDDIR}/defensed.pid"
+
+# Where to write defensed data (be mindful that the blockchain is large)
+#BITCOIND_DATADIR="/var/lib/defensed"
+
+# User and group to own defensed process
+#BITCOIND_USER="defense"
+#BITCOIND_GROUP="defense"
+
+# Path to defensed executable
+#BITCOIND_BIN="/usr/bin/defensed"
+
+# Nice value to run defensed under
+#BITCOIND_NICE=0
+
+# Additional options (avoid -conf and -datadir, use flags above)
+BITCOIND_OPTS=""

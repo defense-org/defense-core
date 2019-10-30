@@ -1,0 +1,11 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=defense
+Comment=defense P2P Cryptocurrency
+Exec=defense-qt %u
+Terminal=false
+Type=Application
+Icon=defense128
+MimeType=x-scheme-handler/defense;
+Categories=Office;Finance;
+Name[en_US]=defense-qt.desktop
