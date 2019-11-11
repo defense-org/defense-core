@@ -99,7 +99,7 @@ public:
         pchMessageStart[3] = 0x1b;
         vAlertPubKey = ParseHex("040ed02c9356bb6e3680ba7ea16f65e7fc66a4876b2acfd047146246bce1001528d41a9c257293d2d83306ecdfefc1ea137a843874f2caea85e93563b16d661c67");
         nDefaultPort = 16425;
-        bnProofOfWorkLimit = ~uint256(0) >> 1;
+        bnProofOfWorkLimit = ~uint256(0) >> 20;
         nSubsidyHalvingInterval = 1050000;
         nMaxReorganizationDepth = 100;
         nEnforceBlockUpgradeMajority = 750;
@@ -113,7 +113,7 @@ public:
         nMaxMoneyOut = 260000000 * COIN;
 
         /** Height or Time Based Activations **/
-        nLastPOWBlock = 401; //150 days
+        nLastPOWBlock = 14400; //10 days
         nModifierUpdateBlock = 1; // we use the version 2 for DFNX
 
         const char* pszTimestamp = "here is 10-24-2019 and there are hundreds of payment systems, we already know how to spend! We need to save our money";
@@ -162,7 +162,8 @@ public:
 
         // DNS Seeding
 
-        vSeeds.push_back(CDNSSeedData("ns1.yinyang.website", "ns1.yinyang.website")); // Amsterdam seed
+        vSeeds.push_back(CDNSSeedData("dns.defense-org.com", "dns.defense-org.com")); // Amsterdam seed
+        vSeeds.push_back(CDNSSeedData("209.250.255.250", "209.250.255.250")); // Amsterdam seed       
         vSeeds.push_back(CDNSSeedData("207.148.90.23", "207.148.90.23")); // Tokyo seed
         vSeeds.push_back(CDNSSeedData("45.76.18.123", "45.76.18.123")); // Chicago seed
         vSeeds.push_back(CDNSSeedData("155.138.151.105", "155.138.151.105")); // Toronto seed

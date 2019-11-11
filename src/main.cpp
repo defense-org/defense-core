@@ -1632,11 +1632,11 @@ int64_t GetBlockValue(int nHeight)
         nSubsidy = 400000 * COIN;
     else if (nHeight <= Params().LAST_POW_BLOCK())
         nSubsidy = 200.0 * COIN;
-    else if (nHeight > Params().LAST_POW_BLOCK() && nHeight <= 700)
+    else if (nHeight > Params().LAST_POW_BLOCK() && nHeight <= 20000)
         nSubsidy = 100.0 * COIN;
-    else if (nHeight > 700 && nHeight <= 1000)
+    else if (nHeight > 20000 && nHeight <= 30000)
         nSubsidy = 50.0 * COIN;
-    else if (nHeight > 1000)
+    else if (nHeight > 30000)
         nSubsidy = 10 * COIN;
     
     // Check if we reached the coin max supply.
@@ -1659,7 +1659,7 @@ int64_t ret = 0;
 if (nHeight < Params().LAST_POW_BLOCK()) {
 ret = blockValue / 100 * 5; // 5% block reward for MN and 95% POW
 } else {
-ret = blockValue / 100 * 35; // 35% block reward for MN and 65% POS
+ret = blockValue / 100 * 25; // 25% block reward for MN and 75% POS
 }
 
 return ret;
